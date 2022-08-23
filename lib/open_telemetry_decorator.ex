@@ -21,15 +21,15 @@ defmodule OpenTelemetryDecorator do
         try do
           case unquote(block) do
             {:ok, result} ->
-              OpenTelemetry.Span.set_attributes(result_handler.handle_result(result))
+              # OpenTelemetry.Span.set_attributes(result_handler.handle_result(result))
               {:ok, result}
 
             {:error, _} = error ->
-              OpenTelemetry.Span.set_attributes(error_handler.handle_error(error))
+              # OpenTelemetry.Span.set_attributes(error_handler.handle_error(error))
               error
 
             {:error, _, _, _} = error ->
-              OpenTelemetry.Span.set_attributes(error_handler.handle_error(error))
+              # OpenTelemetry.Span.set_attributes(error_handler.handle_error(error))
               error
 
             other ->
